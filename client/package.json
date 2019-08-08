@@ -1,0 +1,14 @@
+{
+  "name": "node-grpc-client",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.4.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "google-protobuf": "^3.9.1",
+    "grpc": "^1.22.2"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "debug": "node  --inspect-brk=http://localhost:8080 app.js"
+  }
+}
