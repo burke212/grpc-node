@@ -10,5 +10,8 @@
   "scripts": {
     "start": "node app.js",
     "debug": "node  --inspect-brk=http://localhost:8080 app.js"
+  },
+  "devDependencies": {
+    "grpc-caller": "^0.13.0"
   }
 }

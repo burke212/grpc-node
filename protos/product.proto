@@ -4,7 +4,7 @@ package product;
 // service definition
 
 service ProductService {
-  rpc listProducts(ProductName) returns (ProductList) {}
+  rpc listProducts(Empty) returns (ProductList) {}
   rpc readProduct(ProductId) returns (Product) {}
   rpc createProduct(newProduct) returns (result) {}
   rpc updateProduct(Product) returns (result) {}

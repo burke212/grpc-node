@@ -13,8 +13,8 @@ router.get('/products', function(req, res){
         console.log("lol");
         return grpcRoutes.listProducts(req, res);
     }).then(function(result){
-        // console.log(res);
-        res.json(result);
+        console.log(result);
+        result;
     }).catch(console.error);
 });
 router.get('/products/:id', grpcRoutes.readProduct);

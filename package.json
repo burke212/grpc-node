@@ -32,6 +32,7 @@
     "eslint": "^5.16.0",
     "extract-loader": "^3.1.0",
     "file-loader": "^3.0.1",
+    "grpc-caller": "^0.13.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",

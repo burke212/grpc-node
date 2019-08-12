@@ -33,36 +33,77 @@ Using an older version of gRPC?
 //   }).catch(console.error);
 // }
 
-const listProducts = function(sql){
-  console.log("This bette work...");
-  return new Promise(function(resolve, reject){
+// getDataFromDatabase = (db, sql) => {
+//   db.get(sql, (err, row) => {
+//     if(err){
+//       console.error(err.message);
+//     }
+//     console.log(row);
+//     return row;
+//   });
+// }
+
+// closeDB = (db) => {
+//   db.close((err) => {
+//     if(err) {
+//       console.error(err.message);
+//     }
+//     console.log('closed db');
+//   });
+// }
+
+const listProducts = function(call, callback){
+  let data = { products: "jeff" };
+  console.log(data);
+  callback(null, data);
+  // console.log("This bette work...");
+  // let sql = 'SELECT NAME as name FROM PEEPS';
+  // let db = new sqlite3.Database('../data/testDB.db', sqlite3.OPEN_READONLY);
+  // callback(null, getDataFromDatabase(db, sql));
+  // closeDB(db);
+
+
+  // callback(null, function(){
+  //   console.log("start");
+  //   return new Promise.try(() => {
+  //     console.log("first");
+  //     let db = new sqlite3.Database('../data/testDB.db', sqlite3.OPEN_READONLY);
+  //     return db;
+  //   }).then((db) => {
+  //     console.log("second");
+  //     let data = db.get('SELECT NAME as name FROM PEEPS');
+  //     db.close();
+  //     return data
+  //   }).catch((err) => {
+  //     console.error(err);
+  //   });
+  // });
+  // return new Promise(function(resolve, reject){
     // let sql = 'SELECT NAME as name FROM PEEPS';
       
-      var db = new sqlite3.Database('../data/testDB.db', sqlite3.OPEN_READONLY, (err) => {
-        if(err){
-          console.error(err.message);
-        }
-        console.log("connected to DB");
-      });
+    //   var db = new sqlite3.Database('../data/testDB.db', sqlite3.OPEN_READONLY, (err) => {
+    //     if(err){
+    //       console.error(err.message);
+    //     }
+    //     console.log("connected to DB");
+    //   });
 
-      db.get(sql, (err, row) => {
-        if(err){
-          console.error(err.message);
-          return reject(err);
-        }
-        console.log(row);
-        return resolve(row);
-      });
+    //   db.get(sql, (err, row) => {
+    //     if(err){
+    //       console.error(err.message);
+    //       return reject(err);
+    //     }
+    //     console.log(row);
+    //     return resolve(row);
+    //   });
 
-      // callback(null, data);//BAD - CHANGE TO PROMISE
-
-      db.close((err) => {
-        if(err) {
-          console.error(err.message);
-        }
-        console.log('closed db');
-      });
-  });
+    //   db.close((err) => {
+    //     if(err) {
+    //       console.error(err.message);
+    //     }
+    //     console.log('closed db');
+    //   });
+  // });
 }
 
 // function callListProducts(){
@@ -100,25 +141,7 @@ const listProducts = function(sql){
 
 
 
-// getDataFromDatabase = (db, sql) => {
-//   db.get(sql, (err, row) => {
-//     if(err){
-//       console.error(err.message);
-//     }
-//     return row;
-//   });
 
-// }
-
-// closeDB = (db) => {
-//   db.close((err) => {
-//     if(err) {
-//       console.error(err.message);
-//     }
-//     console.log('closed db');
-//   });
-  
-// }
 
 // const listProducts = (result, callback) => {
 //   console.log("******** Listed the products *********");

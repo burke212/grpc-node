@@ -3,6 +3,7 @@ const path = require('path');
 const protoLoader = require('@grpc/proto-loader');
 const grpc = require('grpc');
 const util = require('util');
+const caller = require('grpc-caller');
 
 // gRPC client
 const productProtoPath = path.join(__dirname, '..', '..', 'protos', 'product.proto');
@@ -39,15 +40,28 @@ const Promise = require('bluebird');
 // let listProducts = callListProducts().then(console.log('Promisfy Worked'), console.error);
 
 const listProducts = function(req, res) {
-  Promise.try(() => {
-    console.log("lol2");
-    let sql = 'SELECT NAME as name FROM PEEPS';
-    return client.listProducts(sql); //"client.listProducts;" returns [object Object]. "client.listProducts()" & "client.listProducts(req, res)" return "Error: Argument mismatch in makeUnaryRequest"
-  }).then((result) => {
-    console.log("lol3"+res.json(result));
+  const payload = { name:  client.productName };
+  console.log("somehting");
+  //HOT FRESHNESS WAY
+  // Promise.try(() => {
+  //   console.log("lol2");
+  //   return client.listProducts( (err, result) => {
+  //     console.log("lol3"+result);
+  //     res.json(result);
+  //   }); //"client.listProducts;" returns [object Object]. "client.listProducts()" & "client.listProducts(req, res)" return "Error: Argument mismatch in makeUnaryRequest"
+  // }).catch(console.error);
+
+  // OLD & BUSTED WAY
+  client.listProducts({}, (err, result) => {
+    console.log(result);
     res.json(result);
-  }).catch(console.error);
+  });
 }
+
+// ).then((result) => {
+//   console.log("lol3"+res.json(result));
+//   res.json(result);
+// }
 
 // async function callClientListProducts(){
 //   let promise = new Promise((resolve, reject) => {
